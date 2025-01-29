@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance services</title>
+    <title>Freelance Services</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,7 +33,7 @@
             margin: 5px 0;
         }
         .item button {
-            background: #0088cc;
+            background: #d9534f;
             color: white;
             border: none;
             padding: 10px;
@@ -44,76 +44,104 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
         .modal-content {
-            background-color: white;
-            margin: 10% auto;
+            background: white;
             padding: 20px;
             border-radius: 10px;
             width: 80%;
             max-width: 400px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: left;
         }
-        .close {
-            float: right;
-            font-size: 28px;
+        .modal-content h2 {
+            color: black;
+        }
+        .modal-content .price {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
             font-weight: bold;
+            margin: 20px 0;
+        }
+        .modal-content .buy-btn {
+            background: #d9534f;
+            color: black;
+            border: 2px solid black;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .gold { color: gold; }
-        .silver { color: silver; }
-        .ordinary { color: green; }
     </style>
 </head>
 <body>
-    <h1>Select a service</h1>
+    <h1>Select a Service</h1>
     <div class="container">
-        <div class="item" onclick="openModal('Ordinary', 'First level project.<br><br>Telegram bot with several simple functions.<br><br><b>3D Model:</b> Basic character or object')">
-            <h2 class="ordinary">Ordinary</h2>
+        <div class="item" onclick="showModal('Ordinary', '$15', 'First level project.\nTelegram bot with simple functions.', '3D Model of a character or an object.')">
+            <h2 style="color: green;">Ordinary</h2>
             <p>Price: $15</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="openModal('Silver Service', 'Bot of average complexity.<br><br><b>3D Model:</b> Medium size and complexity')">
-            <h2 class="silver">Silver Service</h2>
+        <div class="item" onclick="showModal('Silver Service', '$40', 'Bot of medium complexity.', '3D Model of medium size and complexity.')">
+            <h2 style="color: silver;">Silver Service</h2>
             <p>Price: $40</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="openModal('Gold Service', 'Complex, well-developed bot.<br><br><b>3D Model:</b> House map or advanced model')">
-            <h2 class="gold">Gold Service</h2>
+        <div class="item" onclick="showModal('Gold Service', '$100', 'Complex, well-developed bot.', 'Complex 3D model example: house map.')">
+            <h2 style="color: gold;">Gold Service</h2>
             <p>Price: $100</p>
             <button>Buy</button>
         </div>
-    </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDescription"></p>
+        <div class="item" onclick="showModal('Ordinary, Fast', '$20', '100% Faster than the regular version.', '')">
+            <h2 style="color: green;">Ordinary, Fast</h2>
+            <p>Price: $20</p>
+            <button>Buy</button>
+        </div>
+        <div class="item" onclick="showModal('Silver, Fast', '$50', '100% Faster than the regular version.', '')">
+            <h2 style="color: silver;">Silver, Fast</h2>
+            <p>Price: $50</p>
+            <button>Buy</button>
+        </div>
+        <div class="item" onclick="showModal('Gold, Fast', '$150', '100% Faster than the regular version.', '')">
+            <h2 style="color: gold;">Gold, Fast</h2>
+            <p>Price: $150</p>
             <button>Buy</button>
         </div>
     </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <div class="price" id="modal-price"></div>
+            <p id="modal-description"></p>
+            <p style="text-align: center; font-weight: bold;">or</p>
+            <p id="modal-3d"></p>
+            <button class="buy-btn">Buy</button>
+        </div>
+    </div>
+
     <script>
-        function openModal(title, description) {
-            document.getElementById('modalTitle').innerHTML = title;
-            document.getElementById('modalDescription').innerHTML = description;
-            document.getElementById('myModal').style.display = "block";
+        function showModal(title, price, description, model) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-price').textContent = price;
+            document.getElementById('modal-description').textContent = description;
+            document.getElementById('modal-3d').textContent = model;
+            document.getElementById('modal').style.display = 'flex';
         }
-        function closeModal() {
-            document.getElementById('myModal').style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                closeModal();
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
             }
-        }
+        });
     </script>
 </body>
 </html>
+
 
