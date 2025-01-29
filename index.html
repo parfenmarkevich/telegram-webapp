@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance services</title>
+    <title>Freelance Services</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f3;
             margin: 0;
             padding: 20px;
             text-align: center;
@@ -16,20 +16,26 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            max-width: 400px;
+            max-width: 500px;
             margin: auto;
         }
         .item {
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .item:hover {
+            transform: scale(1.05);
         }
         .item h2 {
             margin: 0 0 10px;
+            color: #333;
         }
         .item p {
             margin: 5px 0;
+            color: #666;
         }
         .item button {
             background: #0088cc;
@@ -39,6 +45,33 @@
             width: 100%;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+        }
+        .item button:hover {
+            background: #0077b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -47,47 +80,61 @@
     <div class="container">
         <div class="item">
             <h2>Ordinary</h2>
-            <p>prices: $15</p>
-            <p>description: First level project.
-               Telegra bot with several simple functions.
-
-               3D Model of a character or some kind of thing </p>
-            <button>Buy</button>
+            <p>Price: $15</p>
+            <button onclick="openModal('ordinary')">Buy</button>
         </div>
         <div class="item">
-            <h2>silver service</h2>
-            <p>prices: $40</p>
-            <p>Description: Bot of average complexity with good development
-
-               3D Model of medium size and complexity</p>
-            <button>Buy</button>
+            <h2>Silver Service</h2>
+            <p>Price: $40</p>
+            <button onclick="openModal('silver')">Buy</button>
         </div>
         <div class="item">
-            <h2>Gold service</h2>
-            <p>prices: $100</p>
-            <p>description: Сomplex, well-developed telegram bot, example: your own web store bot
-
-                Сomplex and well-developed 3D model, example: house map</p>
-            <button>Buy</button>
+            <h2>Gold Service</h2>
+            <p>Price: $100</p>
+            <button onclick="openModal('gold')">Buy</button>
         </div>
         <div class="item">
-            <h2>Ordinary, fast</h2>
-            <p>prices: $20</p>
-            <p>description: 100% Faster than the regular version</p>
-            <button>Buy</button>
+            <h2>Ordinary, Fast</h2>
+            <p>Price: $20</p>
+            <button onclick="openModal('ordinaryFast')">Buy</button>
         </div>
         <div class="item">
-            <h2>silver, fast</h2>
-            <p>prices: $50</p>
-            <p>description: 100% Faster than the regular version</p>
-            <button>Buy</button>
+            <h2>Silver, Fast</h2>
+            <p>Price: $50</p>
+            <button onclick="openModal('silverFast')">Buy</button>
         </div>
         <div class="item">
-            <h2>Gold, fast </h2>
-            <p>prices: $150</p>
-            <p>description: 100% Faster than the regular version</p>
-            <button>Buy</button>
+            <h2>Gold, Fast</h2>
+            <p>Price: $150</p>
+            <button onclick="openModal('goldFast')">Buy</button>
         </div>
     </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(service) {
+            const descriptions = {
+                ordinary: "First level project. Telegram bot with several simple functions. 3D Model of a character or some kind of thing.",
+                silver: "Bot of average complexity with good development. 3D Model of medium size and complexity.",
+                gold: "Complex, well-developed telegram bot, example: your own web store bot. Complex and well-developed 3D model, example: house map.",
+                ordinaryFast: "100% Faster than the regular version.",
+                silverFast: "100% Faster than the regular version.",
+                goldFast: "100% Faster than the regular version."
+            };
+            document.getElementById("modal-title").innerText = service.replace(/([A-Z])/g, ' $1').trim();
+            document.getElementById("modal-description").innerText = descriptions[service];
+            document.getElementById("modal").style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
 </body>
 </html>
