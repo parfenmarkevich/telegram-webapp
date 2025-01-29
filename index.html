@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance Services</title>
+    <title>Freelance services</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #eef2f3;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 20px;
             text-align: center;
@@ -16,26 +16,21 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            max-width: 500px;
+            max-width: 400px;
             margin: auto;
         }
         .item {
             background: white;
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
-        .item:hover {
-            transform: scale(1.05);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
         .item h2 {
             margin: 0 0 10px;
-            color: #333;
         }
         .item p {
             margin: 5px 0;
-            color: #666;
         }
         .item button {
             background: #0088cc;
@@ -45,10 +40,6 @@
             width: 100%;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-        }
-        .item button:hover {
-            background: #0077b3;
         }
         .modal {
             display: none;
@@ -58,7 +49,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.4);
         }
         .modal-content {
             background-color: white;
@@ -67,74 +58,62 @@
             border-radius: 10px;
             width: 80%;
             max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
         }
         .close {
             float: right;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
         }
+        .gold { color: gold; }
+        .silver { color: silver; }
+        .ordinary { color: green; }
     </style>
 </head>
 <body>
     <h1>Select a service</h1>
     <div class="container">
-        <div class="item">
-            <h2>Ordinary</h2>
+        <div class="item" onclick="openModal('Ordinary', 'First level project.<br><br>Telegram bot with several simple functions.<br><br><b>3D Model:</b> Basic character or object')">
+            <h2 class="ordinary">Ordinary</h2>
             <p>Price: $15</p>
-            <button onclick="openModal('ordinary')">Buy</button>
+            <button>Buy</button>
         </div>
-        <div class="item">
-            <h2>Silver Service</h2>
+        <div class="item" onclick="openModal('Silver Service', 'Bot of average complexity.<br><br><b>3D Model:</b> Medium size and complexity')">
+            <h2 class="silver">Silver Service</h2>
             <p>Price: $40</p>
-            <button onclick="openModal('silver')">Buy</button>
+            <button>Buy</button>
         </div>
-        <div class="item">
-            <h2>Gold Service</h2>
+        <div class="item" onclick="openModal('Gold Service', 'Complex, well-developed bot.<br><br><b>3D Model:</b> House map or advanced model')">
+            <h2 class="gold">Gold Service</h2>
             <p>Price: $100</p>
-            <button onclick="openModal('gold')">Buy</button>
-        </div>
-        <div class="item">
-            <h2>Ordinary, Fast</h2>
-            <p>Price: $20</p>
-            <button onclick="openModal('ordinaryFast')">Buy</button>
-        </div>
-        <div class="item">
-            <h2>Silver, Fast</h2>
-            <p>Price: $50</p>
-            <button onclick="openModal('silverFast')">Buy</button>
-        </div>
-        <div class="item">
-            <h2>Gold, Fast</h2>
-            <p>Price: $150</p>
-            <button onclick="openModal('goldFast')">Buy</button>
+            <button>Buy</button>
         </div>
     </div>
-
-    <div id="modal" class="modal">
+    <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <button>Buy</button>
         </div>
     </div>
-
     <script>
-        function openModal(service) {
-            const descriptions = {
-                ordinary: "First level project. Telegram bot with several simple functions. 3D Model of a character or some kind of thing.",
-                silver: "Bot of average complexity with good development. 3D Model of medium size and complexity.",
-                gold: "Complex, well-developed telegram bot, example: your own web store bot. Complex and well-developed 3D model, example: house map.",
-                ordinaryFast: "100% Faster than the regular version.",
-                silverFast: "100% Faster than the regular version.",
-                goldFast: "100% Faster than the regular version."
-            };
-            document.getElementById("modal-title").innerText = service.replace(/([A-Z])/g, ' $1').trim();
-            document.getElementById("modal-description").innerText = descriptions[service];
-            document.getElementById("modal").style.display = "block";
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalDescription').innerHTML = description;
+            document.getElementById('myModal').style.display = "block";
         }
         function closeModal() {
-            document.getElementById("modal").style.display = "none";
+            document.getElementById('myModal').style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
         }
     </script>
 </body>
 </html>
+
