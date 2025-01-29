@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance Services</title>
+    <title>Freelance services</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,56 +24,18 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
         }
         .item h2 {
             margin: 0 0 10px;
         }
         .item p {
             margin: 5px 0;
+            text-align: center;
         }
         .item button {
-            background: #d9534f;
+            background: #0088cc;
             color: white;
             border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            text-align: left;
-        }
-        .modal-content h2 {
-            color: black;
-        }
-        .modal-content .price {
-            border: 2px solid black;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        .modal-content .buy-btn {
-            background: #d9534f;
-            color: black;
-            border: 2px solid black;
             padding: 10px;
             width: 100%;
             border-radius: 5px;
@@ -82,66 +44,51 @@
     </style>
 </head>
 <body>
-    <h1>Select a Service</h1>
+    <h1>Select a service</h1>
     <div class="container">
-        <div class="item" onclick="showModal('Ordinary', '$15', 'First level project.\nTelegram bot with simple functions.', '3D Model of a character or an object.')">
-            <h2 style="color: green;">Ordinary</h2>
-            <p>Price: $15</p>
+        <div class="item">
+            <h2>Ordinary</h2>
+            <p>prices: $15</p>
+            <p>description: First level project.<br>
+               Telegram bot with several simple functions.<br><br>
+               3D Model of a character or some kind of thing</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="showModal('Silver Service', '$40', 'Bot of medium complexity.', '3D Model of medium size and complexity.')">
-            <h2 style="color: silver;">Silver Service</h2>
-            <p>Price: $40</p>
+        <div class="item">
+            <h2>Silver service</h2>
+            <p>prices: $40</p>
+            <p>Description: Bot of average complexity with good development.<br><br>
+               3D Model of medium size and complexity</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="showModal('Gold Service', '$100', 'Complex, well-developed bot.', 'Complex 3D model example: house map.')">
-            <h2 style="color: gold;">Gold Service</h2>
-            <p>Price: $100</p>
+        <div class="item">
+            <h2>Gold service</h2>
+            <p>prices: $100</p>
+            <p>description: Complex, well-developed Telegram bot, example: your own web store bot.<br><br>
+                Complex and well-developed 3D model, example: house map</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="showModal('Ordinary, Fast', '$20', '100% Faster than the regular version.', '')">
-            <h2 style="color: green;">Ordinary, Fast</h2>
-            <p>Price: $20</p>
+        <div class="item">
+            <h2>Ordinary, fast</h2>
+            <p>prices: $20</p>
+            <p>description: 100% Faster than the regular version</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="showModal('Silver, Fast', '$50', '100% Faster than the regular version.', '')">
-            <h2 style="color: silver;">Silver, Fast</h2>
-            <p>Price: $50</p>
+        <div class="item">
+            <h2>Silver, fast</h2>
+            <p>prices: $50</p>
+            <p>description: 100% Faster than the regular version</p>
             <button>Buy</button>
         </div>
-        <div class="item" onclick="showModal('Gold, Fast', '$150', '100% Faster than the regular version.', '')">
-            <h2 style="color: gold;">Gold, Fast</h2>
-            <p>Price: $150</p>
+        <div class="item">
+            <h2>Gold, fast</h2>
+            <p>prices: $150</p>
+            <p>description: 100% Faster than the regular version</p>
             <button>Buy</button>
         </div>
     </div>
-
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <h2 id="modal-title"></h2>
-            <div class="price" id="modal-price"></div>
-            <p id="modal-description"></p>
-            <p style="text-align: center; font-weight: bold;">or</p>
-            <p id="modal-3d"></p>
-            <button class="buy-btn">Buy</button>
-        </div>
-    </div>
-
-    <script>
-        function showModal(title, price, description, model) {
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-price').textContent = price;
-            document.getElementById('modal-description').textContent = description;
-            document.getElementById('modal-3d').textContent = model;
-            document.getElementById('modal').style.display = 'flex';
-        }
-        document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
+
 
 
